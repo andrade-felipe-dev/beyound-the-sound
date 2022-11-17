@@ -1,2 +1,2 @@
-# tcc-project-painel-libras
-Repositório para subir os fontes do sistema que será desenvolvido para defesa do TCC, um painel de ensino para libras.
+# beyound-the-sound
+Beyond the sound is a platform for the deaf developed in the course of systems analysis and development by IFPR - Irati with the architecture of microservices

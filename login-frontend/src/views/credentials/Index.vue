@@ -12,7 +12,7 @@
           <v-card elevation="12" max-width="500" max-height="600">
             <v-row class="d-flex justify-center">
               <v-col cols="10" class="pb-0 pt-3">
-                <v-text-field clearable outlined class="mt-2 " label="Usuário" />
+                <v-text-field rules="required" clearable outlined class="mt-2 " label="Usuário" />
               </v-col>
             </v-row>
             <v-row class="d-flex justify-center">
@@ -32,7 +32,7 @@
                 <v-btn
                   color="primary"
                   plain
-                  to="/esqueceu-senha"
+                  @click="openForgotpassword = true"
                 >
                   Esqueceu sua senha?
                 </v-btn>
@@ -41,7 +41,7 @@
             <v-divider class="mt-3"></v-divider>
             <v-row class="d-flex justify-center mt-3">
               <v-col cols="10" class="d-flex justify-center mt-3">
-                <v-btn color="green" class="white--text">
+                <v-btn @click="openCreateAccount = true" color="green" class="white--text">
                   Criar novo usuário
                 </v-btn>
               </v-col>
@@ -50,16 +50,37 @@
         </v-flex>
       </v-layout>
     </v-container>
+    <CreateAccount @close="closeCreateAccount()" :show="openCreateAccount"/>
+    <ForgotPassword @close="closeForgotAccount()" :show="openForgotpassword"/>
   </v-app>
 </template>
 
 <script>
+import CreateAccount from '../create_account/Index.vue'
+import ForgotPassword from '../forgot_password/Index.vue'
+
 export default {
   name: 'Authentication',
 
-  methods: {
+  components: {
+    CreateAccount,
+    ForgotPassword
+  },
 
-  }
+  methods: {
+    closeCreateAccount () {
+      this.openCreateAccount = false
+    },
+
+    closeForgotAccount () {
+      this.openForgotpassword = false
+    }
+  },
+
+  data: () => ({
+    openCreateAccount: false,
+    openForgotpassword: false
+  })
 }
 </script>
 

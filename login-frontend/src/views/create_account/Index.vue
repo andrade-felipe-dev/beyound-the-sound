@@ -2,7 +2,7 @@
   <v-dialog max-width="500px" v-model="dialog" persistent>
     <v-card>
         <v-card-title class="ml-3 mr-2 pa-1">
-          <span class="text-h5">Recuperar usuário</span>
+          <span class="text-h5">Cadastrar Usuário</span>
           <v-spacer></v-spacer>
           <v-icon @click="close()">mdi-window-close</v-icon>
         </v-card-title>
@@ -11,13 +11,35 @@
           <v-container>
             <v-row>
               <v-col
+                class="pb-0"
                 cols="12"
                 sm="6"
                 md="12"
-                class="pb-0"
+              >
+                <v-text-field
+                  label="Nome*"
+                  outlined
+                  clearable
+                />
+              </v-col>
+              <v-col
+                cols="12"
+                sm="6"
+                md="12"
+                class="pb-0 pt-0"
               >
                 <v-text-field
                   label="E-mail*"
+                  outlined
+                  clearable
+                />
+              </v-col>
+              <v-col cols="12"
+                sm="6"
+                md="12" class="pb-0 pt-0">
+                <v-text-field
+                  label="Senha*"
+                  type="password"
                   outlined
                   clearable
                 />

@@ -12,17 +12,22 @@
           <v-card elevation="12" max-width="500" max-height="600">
             <v-row class="d-flex justify-center">
               <v-col cols="10" class="pb-0 pt-3">
-                <v-text-field rules="required" clearable outlined class="mt-2 " label="Usuário" />
+                <ValidationObserver ref="observer">
+                  <ValidationProvider name="Usuario" rules="required" v-slot="{ errors }">
+                    <v-text-field v-model="user" clearable outlined class="mt-2 " label="Usuário" :error-messages="errors" />
+                  </ValidationProvider>
+                </ValidationObserver>
               </v-col>
             </v-row>
             <v-row class="d-flex justify-center">
               <v-col cols="10" class="pb-0 pt-0">
-                <v-text-field  clearable outlined label="Senha" type="password" />
+                <v-text-field clearable outlined label="Senha" type="password" />
               </v-col>
             </v-row>
             <v-row class="d-flex justify-center">
               <v-col class="pb-0 pt-0" cols="10">
                 <v-btn
+                  @click="login()"
                   block
                   color="primary">
                   Acessar
@@ -74,12 +79,19 @@ export default {
 
     closeForgotAccount () {
       this.openForgotpassword = false
+    },
+
+    async login () {
+      const resp = await this.$refs.observer.validate()
+
+      if (!resp) return false
     }
   },
 
   data: () => ({
     openCreateAccount: false,
-    openForgotpassword: false
+    openForgotpassword: false,
+    user: ''
   })
 }
 </script>

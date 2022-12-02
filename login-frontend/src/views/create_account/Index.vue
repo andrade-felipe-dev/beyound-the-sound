@@ -48,7 +48,7 @@
           </v-container>
         </v-card-text>
         <v-divider></v-divider>
-        <v-card-actions class="pa-0 pt-1">
+        <v-card-actions class="pa-0 pt-2 pb-2">
           <v-btn
             color="blue darken-1"
             text

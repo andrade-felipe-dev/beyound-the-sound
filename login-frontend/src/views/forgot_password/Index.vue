@@ -1,5 +1,5 @@
 <template>
-  <v-dialog max-width="500px" v-model="dialog" persistent>
+  <v-dialog max-width="500" height="700" v-model="dialog" persistent>
     <v-card>
         <v-card-title class="ml-3 mr-2 pa-1">
           <span class="text-h5">Recuperar usuário</span>
@@ -26,7 +26,7 @@
           </v-container>
         </v-card-text>
         <v-divider></v-divider>
-        <v-card-actions class="pa-0 pt-1">
+        <v-card-actions class="pa-0 pt-2 pb-2">
           <v-btn
             color="blue darken-1"
             text

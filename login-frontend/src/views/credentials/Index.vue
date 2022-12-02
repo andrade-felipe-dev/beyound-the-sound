@@ -9,49 +9,51 @@
       </v-layout>
       <v-layout align-center justify-center>
         <v-flex xs12 sm15 md10>
-          <v-card elevation="12" max-width="500" max-height="600">
-            <v-row class="d-flex justify-center">
-              <v-col cols="10" class="pb-0 pt-3">
-                <ValidationObserver ref="observer">
-                  <ValidationProvider name="Usuario" rules="required" v-slot="{ errors }">
-                    <v-text-field v-model="user" clearable outlined class="mt-2 " label="Usuário" :error-messages="errors" />
-                  </ValidationProvider>
-                </ValidationObserver>
-              </v-col>
-            </v-row>
-            <v-row class="d-flex justify-center">
-              <v-col cols="10" class="pb-0 pt-0">
-                <v-text-field clearable outlined label="Senha" type="password" />
-              </v-col>
-            </v-row>
-            <v-row class="d-flex justify-center">
-              <v-col class="pb-0 pt-0" cols="10">
-                <v-btn
-                  @click="login()"
-                  block
-                  color="primary">
-                  Acessar
-                </v-btn>
-              </v-col>
-              <v-col class="pb-0 pt-0 d-flex justify-center" cols="10">
-                <v-btn
-                  color="primary"
-                  plain
-                  @click="openForgotpassword = true"
-                >
-                  Esqueceu sua senha?
-                </v-btn>
-              </v-col>
-            </v-row>
-            <v-divider class="mt-3"></v-divider>
-            <v-row class="d-flex justify-center mt-3">
-              <v-col cols="10" class="d-flex justify-center mt-3">
-                <v-btn @click="openCreateAccount = true" color="green" class="white--text">
-                  Criar novo usuário
-                </v-btn>
-              </v-col>
-            </v-row>
-          </v-card>
+          <ValidationObserver ref="observer">
+            <v-card elevation="12" max-width="500" max-height="600">
+              <v-row class="d-flex justify-center">
+                <v-col cols="10" class="pb-0 pt-3">
+                    <ValidationProvider name="e-mail" rules="required|email" v-slot="{ errors }">
+                      <v-text-field v-model="credentials.email" clearable outlined class="mt-2 " label="E-mail*" :error-messages="errors" />
+                    </ValidationProvider>
+                  </v-col>
+                </v-row>
+                <v-row class="d-flex justify-center">
+                  <v-col cols="10" class="pb-0 pt-0">
+                    <ValidationProvider name="senha" rules="required" v-slot="{ errors }">
+                      <v-text-field v-model="credentials.password" clearable outlined label="Senha" type="password" :error-messages="errors" />
+                    </ValidationProvider>
+                  </v-col>
+                </v-row>
+                <v-row class="d-flex justify-center">
+                  <v-col class="pb-0 pt-0" cols="10">
+                    <v-btn
+                    @click="login()"
+                    block
+                    color="primary">
+                    Acessar
+                  </v-btn>
+                </v-col>
+                <v-col class="pb-0 pt-0 d-flex justify-center" cols="10">
+                  <v-btn
+                    color="primary"
+                    plain
+                    @click="openForgotpassword = true"
+                  >
+                    Esqueceu sua senha?
+                  </v-btn>
+                </v-col>
+              </v-row>
+              <v-divider class="mt-3"></v-divider>
+              <v-row class="d-flex justify-center">
+                <v-col cols="10" class="d-flex justify-center mt-3">
+                  <v-btn @click="openCreateAccount = true" color="green" class="white--text">
+                    Criar novo usuário
+                  </v-btn>
+                </v-col>
+              </v-row>
+            </v-card>
+          </ValidationObserver>
         </v-flex>
       </v-layout>
     </v-container>
@@ -91,7 +93,7 @@ export default {
   data: () => ({
     openCreateAccount: false,
     openForgotpassword: false,
-    user: ''
+    credentials: {}
   })
 }
 </script>
